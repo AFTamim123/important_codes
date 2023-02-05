@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+    int data;
+    struct node* next;
+};
+struct node *head;
+// new node creation
+struct node *create_node(int data, struct node *next) { 
+    /*[struct node* create_node] the function is a pointer type so that it returns pointer.if not it would be  a local
+    variable and will deallocate the allocated memo. after function call is done.(reference:call by value topic)*/
+    struct node *new_node = (struct node*) malloc(sizeof(struct node));
+    new_node->data = data;
+    new_node->next = NULL;
+    return new_node;
+}
+/*qstn : why returning pointer type value
+ans: If the function returned a non-pointer value, it would create a local variable inside the function, 
+and the memory would be deallocated as soon as the function returns, making it impossible to access the node from outside the function.
+With a pointer, the memory remains allocated even after the function returns, and can be accessed and used outside the function.*/
+
+int main() {
+    struct node *n;
+    n = create_node(10,NULL);
+    printf("data = %d", n->data);
+    return 0;
+}

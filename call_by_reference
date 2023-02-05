@@ -1,0 +1,31 @@
+// pass by value
+#include <stdio.h>
+#include <stdlib.h>
+int plus(int x, int y) {
+    x = 10;
+    y = 5;
+}
+int main() {
+    int x = 5;
+    int y = 10;
+    plus(x,y);
+    printf("%d %d", x, y);
+    /*the value of x,y in plus function will not affect this because changing the value os a temporary thing.
+    it stores the value in temporary mem.so when the function call is over it vanishes.but in call by refer we are accessing the memory
+    location of the data othe f main func.so it's not temp*/
+    return 0;
+}
+//pass by reference
+#include <stdio.h>
+#include <stdlib.h>
+int plus(int *x, int *y) {
+    *x = 10;
+    *y = 5;
+}
+int main() {
+    int x = 5;
+    int y = 10;
+    plus(&x,&y);
+    printf("%d %d", x, y);
+    return 0;
+}
